@@ -10,26 +10,23 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('full_name');
             $table->string('email')->unique();
-            $table->string('phone')->nullable();
-            $table->string('status')->default('Active');
+            $table->string('phone');
             $table->timestamps();
         });
 
-        Schema::create('pos_users', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('role');
-            $table->string('status')->default('Active');
+            $table->string('username')->unique();
+            $table->string('full_name');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('pos_users');
+        Schema::dropIfExists('users');
         Schema::dropIfExists('customers');
     }
 };

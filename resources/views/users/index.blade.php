@@ -1,33 +1,13 @@
-@extends('layouts.app', ['title' => 'User Accounts'])
+@extends('layouts.app')
 
 @section('content')
-
-<h1>User Accounts</h1>
-
-<p>User records from a static PHP array.</p>
-
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach ($users as $user)
-            <tr>
-                <td>{{ $user['id'] }}</td>
-                <td>{{ $user['name'] }}</td>
-                <td>{{ $user['email'] }}</td>
-                <td>{{ $user['role'] }}</td>
-                <td>{{ $user['status'] }}</td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
-
+    <div class="page-heading compact"><p class="eyebrow">Accounts</p><h1>User Accounts</h1><p class="lead">User records retrieved from the database using Eloquent.</p></div>
+    <section class="table-panel">
+        <div class="panel-header"><h2>POS users</h2><span class="count">{{ $users->count() }} records</span></div>
+        <div class="table-wrap"><table><thead><tr><th>ID</th><th>Username</th><th>Full Name</th></tr></thead><tbody>
+            @foreach ($users as $user)
+                <tr><td>{{ $user->id }}</td><td class="strong">{{ $user->username }}</td><td>{{ $user->full_name }}</td></tr>
+            @endforeach
+        </tbody></table></div>
+    </section>
 @endsection

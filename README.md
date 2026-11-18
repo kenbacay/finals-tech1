@@ -20,7 +20,7 @@ composer create-project laravel/laravel pos-foundations
 Copy the folders in this repository into the fresh Laravel application, allowing the provided files to replace the default files. Then run:
 
 ```bash
-php artisan migrate --seed --seeder=PosReferenceSeeder
+php artisan migrate:fresh --seed --seeder=PosReferenceSeeder
 php artisan serve
 ```
 
@@ -33,7 +33,7 @@ php artisan route:list
 php artisan migrate:status
 ```
 
-The account pages intentionally use static arrays in their controllers, as required by the activity. The migration and seeder are included as the database submission requirement for future database-backed features.
+The account pages retrieve records through the `Customer` and `User` Eloquent models. The database schema matches TFA2: `customers` contains `full_name`, `email`, and `phone`; `users` contains a unique `username` and `full_name`.
 
 ## Submission checklist
 
